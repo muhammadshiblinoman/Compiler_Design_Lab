@@ -2,8 +2,10 @@
 Write a program to recognize C++
  i) Keyword ii) Identifier iii) Operator iv) Constant
 */
-#include <bits/stdc++.h>
+
+#include<bits/stdc++.h>
 using namespace std;
+
 string keywords[] = {"alignas", "alignof", "and", "and_eq", "asm", "auto", "bitand", "bitor",
                      "bool", "break", "case", "catch", "char", "char8_t", "char16_t", "char32_t",
                      "class", "compl", "concept", "const", "consteval", "constexpr", "const_cast",
@@ -16,75 +18,85 @@ string keywords[] = {"alignas", "alignof", "and", "and_eq", "asm", "auto", "bita
                      "static_assert", "static_cast", "struct", "switch", "synchronized", "template",
                      "this", "thread_local", "throw", "true", "try", "typedef", "typeid", "typename",
                      "union", "unsigned", "using", "virtual", "void", "volatile", "wchar_t", "while",
-                     "xor", "xor_eq"};
-string operators[] = {
-    "+", "-", "*", "/", "%",                                           // Arithmetic Operators
-    "==", "!=", "<", ">", "<=", ">=",                                  // Relational Operators
-    "&&", "||", "!",                                                   // Logical Operators
-    "&", "|", "^", "~", "<<", ">>",                                    // Bitwise Operators
-    "=", "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "<<=", ">>=", // Assignment Operators
-    "++", "--",                                                        // Increment and Decrement Operators
-    "?", ":",                                                          // Conditional Operator
-    ",",                                                               // Comma Operator
-    ".", "->",                                                         // Member Access Operators
-    "::"                                                               // Scope Resolution Operator
+                     "xor", "xor_eq"
 };
 
-int main()
-{
-    freopen("07.input.txt", "r", stdin);
-    string str;
-    while (getline(cin, str))
-    {
-        bool isValid = true;
-        if (find(begin(keywords), end(keywords), str) != end(keywords))
-        {
-            cout << str << " : "
-                 << "Keyword\n";
-        }
-        else if (find(begin(operators), end(operators), str) != end(operators))
-        {
-            cout << str << " : "
-                 << "Operator\n";
-        }
-        else if (str[0] == '_' || isalpha(str[0]))
-        {
-            for (int i = 1; i < str.length(); i++)
-            {
-                if (!isalnum(str[i]) && str[i] != '_')
-                {
-                    isValid = false;
-                    break;
-                }
-            }
-            if (isValid) cout << str << " : " << "Identifier\n";
-        }
-        else if (str[0] == '"' && str[str.length() - 1] == '"')
-        {
-            cout << str << " : " << "Constant\n";
-        }
-        else if (str[0] == '.' || isdigit(str[0]))
-        {
-            int dot_count = 0;
-            for (char c : str)
-            {
-                if (!isdigit(c) && c != '.') {
-                    isValid = false;
-                    break;
-                }
-                if (c == '.')
-                    dot_count++;
-            }
-            if (isValid && dot_count < 2) cout << str << " : "<< "Constant\n";
-            else isValid = false;
-        }
-        else
-        {
-            isValid = false;
-        }
-        if(!isValid) {
-            cout << str << " : "<< "Invalid Lexeme\n";
+string operators[] = {
+    "+", "-", "*", "/", "%",
+    "==", "!=", "<", ">", "<=", ">=",
+    "&&", "||", "!",
+    "&", "|", "^", "~", "<<", ">>",
+    "=", "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "<<=", ">>=", 
+    "++", "--",
+    "?", ":",
+    ",",
+    ".", "->",
+    "::"
+};
+
+bool checkKeyword(string str) {
+    for(auto i: keywords) {
+        if(str == i) {
+            return true;
         }
     }
+    return false;
+}
+
+bool checkOperator(string str) {
+    for(auto i: operators) {
+        if(i == str) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool checkConstnt(string str) {
+    int cnt = 0;
+    for(int i = 0; i < str.size(); i++) {
+        if(str[i] == '.') {
+            cnt++;
+        }
+        else if(!isdigit(str[i])) {
+            return false;
+        }
+    }
+    if(cnt > 1) {
+        return false;
+    }
+    return true;
+}
+
+bool numaric(string word) {
+    for(int i = 1; i < word.size(); i++) {
+        if(!isalnum(word[i]) && word[i] != '_') {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    freopen("07.input.txt", "r", stdin);
+    string str;
+    while(getline(cin, str)) {
+        if(checkKeyword(str)) {
+            cout << str << " : " << "Keyword\n";
+        }
+        else if(checkOperator(str)) {
+            cout << str << " : " << "Operator\n";
+        }
+        else if(checkConstnt(str) || (str[0] == '"' and str[str.size()-1] == '"') ) {
+            cout << str << " : " << "Constant\n";
+        }
+        else if (str[0] == '_' || isalpha(str[0])) {
+            bool isValid = numaric(str);
+            if (isValid) cout << str << " : " << "Identifier\n";
+        } else {
+            cout << str << " : " << "Invalid Lexeme\n";
+        }
+    }
+
     return 0;
 }
