@@ -6,7 +6,7 @@ Write a program to recognize C++
 #include<bits/stdc++.h>
 using namespace std;
 
-string keywords[] = {"alignas", "alignof", "and", "and_eq", "asm", "auto", "bitand", "bitor",
+vector<string> keywords = {"alignas", "alignof", "and", "and_eq", "asm", "auto", "bitand", "bitor",
                      "bool", "break", "case", "catch", "char", "char8_t", "char16_t", "char32_t",
                      "class", "compl", "concept", "const", "consteval", "constexpr", "const_cast",
                      "continue", "co_await", "co_return", "co_yield", "decltype", "default", "delete",
@@ -21,7 +21,7 @@ string keywords[] = {"alignas", "alignof", "and", "and_eq", "asm", "auto", "bita
                      "xor", "xor_eq"
 };
 
-string operators[] = {
+vector<string> operators = {
     "+", "-", "*", "/", "%",
     "==", "!=", "<", ">", "<=", ">=",
     "&&", "||", "!",
@@ -34,18 +34,9 @@ string operators[] = {
     "::"
 };
 
-bool checkKeyword(string str) {
-    for(auto i: keywords) {
-        if(str == i) {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool checkOperator(string str) {
-    for(auto i: operators) {
-        if(i == str) {
+bool stringChecking(const string& str, const vector<string>& check) {
+    for (const auto& i : check) {
+        if (str == i) {
             return true;
         }
     }
@@ -81,10 +72,10 @@ int main() {
     freopen("07.input.txt", "r", stdin);
     string str;
     while(getline(cin, str)) {
-        if(checkKeyword(str)) {
+        if(stringChecking(str, keywords)) {
             cout << str << " : " << "Keyword\n";
         }
-        else if(checkOperator(str)) {
+        else if(stringChecking(str, operators)) {
             cout << str << " : " << "Operator\n";
         }
         else if(checkConstnt(str) || (str[0] == '"' and str[str.size()-1] == '"') ) {

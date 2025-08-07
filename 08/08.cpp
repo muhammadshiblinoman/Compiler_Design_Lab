@@ -17,7 +17,7 @@ Output: Arithmetic Operator
 using namespace std;
 
 int cnt;
-string keywords[] = {"alignas", "alignof", "and", "and_eq", "asm", "auto", "bitand", "bitor",
+vector<string> keywords = {"alignas", "alignof", "and", "and_eq", "asm", "auto", "bitand", "bitor",
                      "bool", "break", "case", "catch", "char", "char8_t", "char16_t", "char32_t",
                      "class", "compl", "concept", "const", "consteval", "constexpr", "const_cast",
                      "continue", "co_await", "co_return", "co_yield", "decltype", "default", "delete",
@@ -31,70 +31,17 @@ string keywords[] = {"alignas", "alignof", "and", "and_eq", "asm", "auto", "bita
                      "union", "unsigned", "using", "virtual", "void", "volatile", "wchar_t", "while",
                      "xor", "xor_eq"
 };
-string arithmetic_operators[] = {"+", "-", "*", "/", "%"};
-string relational_operators[] = {"==", "!=", "<", ">", "<=", ">="};
-string logical_operators[] = {"&&", "||", "!"};
-string bitwise_operators[] = {"&", "|", "^", "~", "<<", ">>"};
-string assignment_operators[] = {"=", "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "<<=", ">>="};
-string increment_decrement_operators[] = {"++", "--"};
 
-bool checkKeyword(string str) {
-    for(auto i: keywords) {
-        if(str == i) {
-            return true;
-        }
-    }
-    return false;
-}
+vector<string> arithmetic_operators = {"+", "-", "*", "/", "%"};
+vector<string> relational_operators = {"==", "!=", "<", ">", "<=", ">="};
+vector<string> logical_operators = {"&&", "||", "!"};
+vector<string> bitwise_operators = {"&", "|", "^", "~", "<<", ">>"};
+vector<string> assignment_operators = {"=", "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "<<=", ">>="};
+vector<string> increment_decrement_operators = {"++", "--"};
 
-bool check_arithmetic_operators(string str) {
-    for(auto i: arithmetic_operators) {
-        if(i == str) {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool check_relational_operators(string str) {
-    for(auto i: relational_operators) {
-        if(i == str) {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool check_logical_operators(string str) {
-    for(auto i: logical_operators) {
-        if(i == str) {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool check_bitwise_operators(string str) {
-    for(auto i: bitwise_operators) {
-        if(i == str) {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool check_assignment_operators(string str) {
-    for(auto i: assignment_operators) {
-        if(i == str) {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool check_increment_decrement_operators(string str) {
-    for(auto i: increment_decrement_operators) {
-        if(i == str) {
+bool stringChecking(const string& str, const vector<string>& check) {
+    for (const auto& i : check) {
+        if (str == i) {
             return true;
         }
     }
@@ -130,22 +77,22 @@ int main() {
     freopen("08.input.txt", "r", stdin);
     string str;
     while(getline(cin, str)) {
-        if(checkKeyword(str)) {
+        if(stringChecking(str, keywords)) {
             cout << str << " : " << "Keyword\n";
         }
-        else if(check_arithmetic_operators(str)) {
+        else if(stringChecking(str, arithmetic_operators)) {
             cout << str << " : " << "Arithmetic Operators\n";
         }
-        else if(check_assignment_operators(str)) {
+        else if(stringChecking(str, assignment_operators)) {
             cout << str << " : " << "Assignment Operators\n";
         }
-        else if(check_bitwise_operators(str)) {
+        else if(stringChecking(str, bitwise_operators)) {
             cout << str << " : " << "Bitwise Operators\n";
         }
-        else if(check_relational_operators(str)) {
+        else if(stringChecking(str, relational_operators)) {
             cout << str << " : " << "Relatioinal Operator\n";
         }
-        else if(check_increment_decrement_operators(str)) {
+        else if(stringChecking(str, increment_decrement_operators)) {
             cout << str << " : " << "Increment or Decrement Operators\n";
         }
         else if(checkConstnt(str) ) {

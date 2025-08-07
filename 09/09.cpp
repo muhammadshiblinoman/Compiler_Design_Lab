@@ -19,26 +19,8 @@ vector<string> subject = {"Sagor", "Selim", "Salma", "Nipu", "he", "she", "I", "
 vector<string> verb = {"read", "eat", "take", "run", "write"};
 vector<string> noun = {"book", "cow", "dog", "home", "grass", "rice", "mango"};
 
-bool checkSubject(string str) {
-    for(auto u: subject) {
-        if((u == str)) {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool checkVerb(string str) {
-    for(auto u: verb) {
-        if((u == str)) {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool checkNoun(string str) {
-    for(auto u: noun) {
+bool wordChecking(string str, vector<string>&check) {
+    for(auto u: check) {
         if((u == str)) {
             return true;
         }
@@ -67,14 +49,14 @@ int main() {
         int cnt = 0;
 
         if(len >= 2 and len <= 3) {
-            if(checkSubject(words[0])) {
+            if(wordChecking(words[0], subject)) {
                cnt++;
             }
-            if(checkVerb(words[1])) {
+            if(wordChecking(words[1], verb)) {
                 cnt++;
             }
             if(len == 3) {
-                if(checkNoun(words[2])) {
+                if(wordChecking(words[2], noun)) {
                     cnt++;
                 }
             }

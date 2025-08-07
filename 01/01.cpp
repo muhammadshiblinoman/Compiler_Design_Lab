@@ -15,18 +15,18 @@ void generateFunction(string input) {
     string separateLetters, separateDigits, separateOtherChar;
 
     for(char c : input) {
-        if(c == ' ') words++; // Number of words are counted using space
+        if(c == ' ') words++;
         else if(tolower(c) >= 'a' && tolower(c) <= 'z') {
-            letters++; // Count letter and from a string
+            letters++;
             separateLetters += c; 
         }
         else if(c >= '0' && c <= '9') {
-            digits++; // Count digit and from a string
-            separateDigits += c; // Separate Digits from a string
+            digits++;
+            separateDigits += c;
         }
         else {
-            otherCharacters++; // Count Other Character from a string
-            separateOtherChar += c; // Separate Other Character from a string
+            otherCharacters++;
+            separateOtherChar += c;
         }
 
     }
