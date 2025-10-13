@@ -14,20 +14,20 @@ void reduce() {
             int position = stk.find(rule.first);
             stk.erase(position); // Remove the right side of the production
             stk += rule.second; // Add the left side of the production
-            cout << left << setw(13) << "$" + stk<< right << setw(13) << input + "$" <<right<< "         Reduce " << rule.second << "-->" << rule.first << "\n";
+            cout << left << setw(13) << "$" + stk << right << setw(13) << input + "$" << right << "         Reduce " << rule.second << "-->" << rule.first << "\n";
             reduce();
             return;
         }
     }
 }
 
-int main()
-{
+int main() {
     freopen("10.input.txt", "r", stdin);
     string production;
     int n; // Number of production rules
-    cin>>n;
+    cin >> n;
     cin.ignore();
+
     for(int k = 0; k < n; k++) // Read the grammar from file
     {
         getline(cin, production);
@@ -35,14 +35,15 @@ int main()
     }                                                // Right side is the value
 
     cin >> input; // a+a*(a+a)+a
-    cout<<"Stack              "<<"Input            "<<"Action\n";
-    cout << left << setw(13) << "$" + stk<< right << setw(13) << input + "$"<<endl;
+    cout << "Stack              " << "Input            " << "Action\n";
+    cout << left << setw(13) << "$" + stk << right << setw(13) << input + "$" << '\n';
+
     for(int i = 0; !input.empty(); i++) {
         stk += input[0]; // Push the terminal into stack
         input.erase(0, 1); // Remove first character from the input
-        cout << left << setw(13) << "$" + stk<< right << setw(13) << input + "$" << right<< "         Shift " << stk.back() << "\n";
+        cout << left << setw(13) << "$" + stk << right << setw(13) << input + "$" << right << "         Shift " << stk.back() << "\n";
         reduce();
     }
-    if(stk == "E") cout<<"Accepted";
-    else cout<<"Rejected";
+    if(stk == "E") cout << "Accepted";
+    else cout << "Rejected";
 }
