@@ -17,40 +17,12 @@ struct Node {
     }
 };
 
-bool isOperand(char c);
-bool isOperator(char c);
-int precedence(char c);
-string infixtoPostfix(string infix);
-Node* parse(string str);
-void print(Node* root, int space = 0, int indent = 4) { // Inorder traversal of tree
-    if (root == NULL) return;
-    space += indent;
-    print(root->right, space);
-    cout<<endl;
-    for (int i = indent; i < space; i++) {
-        cout << " ";
-    }
-    cout << root->data;
-    print(root->left, space);
-}
-
-int main() {
-    freopen("11.input.txt", "r", stdin);
-    string str;
-    getline(cin, str);
-    str = infixtoPostfix(str);
-    Node* tree = parse(str);
-    print(tree);
-    cout<<endl;
-    return 0;
+bool isOperand(char c) {
+    return isalnum(c);
 }
 
 bool isOperator(char c) {
     return (c == '+' || c == '-' || c == '*' || c == '/');
-}
-
-bool isOperand(char c) {
-    return isalnum(c);
 }
 
 int precedence(char c) {
@@ -121,4 +93,27 @@ Node* parse(string str) {
         }
     }
     return stack.top();
+}
+
+void print(Node* root, int space = 0, int indent = 4) { // Inorder traversal of tree
+    if (root == NULL) return;
+    space += indent;
+    print(root->right, space);
+    cout<<endl;
+    for (int i = indent; i < space; i++) {
+        cout << " ";
+    }
+    cout << root->data;
+    print(root->left, space);
+}
+
+int main() {
+    freopen("11.input.txt", "r", stdin);
+    string str;
+    getline(cin, str);
+    str = infixtoPostfix(str);
+    Node* tree = parse(str);
+    print(tree);
+    cout<<endl;
+    return 0;
 }
