@@ -2,12 +2,12 @@
 Write a program that converts the C++ expression to an intermediate code of 
 Post-fix notation form.
 */
+
 #include <bits/stdc++.h>
 using namespace std;
 
 int precedence(char ch) {
-    switch (ch)
-    {
+    switch (ch) {
     case '^':
         return 3;
     case '/':
@@ -30,7 +30,7 @@ string infixtoPostfix(string infix) {
             postfix += ch;
         }
         // push open parentheses into stack
-        else if(ch == '(') stk.push(ch);
+        else if(ch == '(')  stk.push(ch);
 
         else if(ch == ')') {
             // pop from stack and add to postfix until open parentheses appears
@@ -61,6 +61,7 @@ int main() {
     freopen("16.input.txt", "r", stdin);
     string infix;
     getline(cin, infix);
+
     cout<<infixtoPostfix(infix);
     return 0;
 }
