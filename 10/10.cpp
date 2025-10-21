@@ -28,19 +28,19 @@ int main() {
     cin >> n;
     cin.ignore();
 
-    for(int k = 0; k < n; k++) // Read the grammar from file
+    for(int k = 0; k < n; k++)     // Read the grammar from file
     {
         getline(cin, production);
-        rules[production.substr(3)] = production[0]; // Left side of the production is key
-    }                                                // Right side is the value
+        rules[production.substr(3)] = production[0];   // Left side of the production is key
+    }                                                  // Right side is the value
 
-    cin >> input; // a+a*(a+a)+a
+    cin >> input;     // a+a*(a+a)+a
     cout << "Stack              " << "Input            " << "Action\n";
     cout << left << setw(13) << "$" + stk << right << setw(13) << input + "$" << '\n';
 
     for(int i = 0; !input.empty(); i++) {
-        stk += input[0]; // Push the terminal into stack
-        input.erase(0, 1); // Remove first character from the input
+        stk += input[0];        // Push the terminal into stack
+        input.erase(0, 1);     // Remove first character from the input
         cout << left << setw(13) << "$" + stk << right << setw(13) << input + "$" << right << "         Shift " << stk.back() << "\n";
         reduce();
     }
