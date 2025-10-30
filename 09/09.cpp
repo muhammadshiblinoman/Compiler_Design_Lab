@@ -61,9 +61,7 @@ int main() {
                 }
             }
         }
-        if(len == 3 and cnt == 3) {
-            cout << input << " : " << "Valid\n";
-        } else if(len == 2 and cnt == 2) {
+        if((len == 3 and cnt == 3) or (len == 2 and cnt == 2)) {
             cout << input << " : " << "Valid\n";
         } else {
             cout << input << " : " << "Invalid\n";

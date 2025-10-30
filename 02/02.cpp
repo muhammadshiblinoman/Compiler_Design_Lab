@@ -47,7 +47,6 @@ int main() {
     else consonant_words += " " + word;
     word = "";
 
-
     cout << "\nNumber of vowels: " << vowel << '\n';
     cout << "The vowels are: " << vowels << '\n';
     cout << "Number of consonants: " << consonant << '\n';

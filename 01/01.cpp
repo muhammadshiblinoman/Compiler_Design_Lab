@@ -6,7 +6,6 @@ b) Separates letters, digits and others characters.
 */
 
 
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -38,7 +37,6 @@ void generateFunction(string input) {
     cout << "\nThe letters are: " << separateLetters <<'\n';
     cout << "The digits are: " << separateDigits << '\n';
     cout << "The characters are: " << separateOtherChar << '\n';
-
 }
 
 int main() {

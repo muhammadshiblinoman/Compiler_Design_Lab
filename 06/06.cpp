@@ -37,7 +37,7 @@ int main() {
                 else cout << word << " : " << "Binary variable\n";
             }
         }
-        else if(word.size() >= 2 && word[0] == '0' && (word[1] == '1' || word[1] == '0')) {
+        else if(word.size() > 2 && word[0] == '0' && (word[1] == '1' || word[1] == '0')) {
             isValid = is_binary_number(word);
             if(isValid) cout << word << " : "<< "Binary Number\n";
         }
