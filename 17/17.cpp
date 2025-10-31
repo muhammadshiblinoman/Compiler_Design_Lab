@@ -2,6 +2,8 @@
 Write a program that converts the C++ statement to an intermediate code of 
 Post-fix notation form.
 */
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -26,7 +28,7 @@ string infixtoPostfix(string infix) {
     stack<char> stk;
     for(char ch : infix) {
         // add operands to postfix string
-        if(ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z') {
+        if(tolower(ch) >= 'a' && tolower(ch) <= 'z') {
             postfix += ch;
         }
         // push open parentheses into stack
@@ -50,6 +52,7 @@ string infixtoPostfix(string infix) {
             stk.push(ch);
         }          
     }
+    
     while (!stk.empty()) {
         postfix += stk.top();
         stk.pop();
@@ -63,13 +66,16 @@ string solve(string infix) {
     for(char ch : infix) {
         if(ch != ' ') temp += ch; // formation of keyword or expression
         else {
-            if(temp == "then") {temp = ""; continue;}
-            if(temp == "if") stk.push(temp);
-            else if(temp == "else") {
-                stk.push(temp);
-
+            if(temp == "then") {
+                temp = ""; 
+                continue;
             }
-            else {
+
+            if(temp == "if") {
+                stk.push(temp);
+            }  else if(temp == "else") {
+                stk.push(temp);
+            } else {
                 // convert infix expression into postfix and add to the postfix string
                 postfix += infixtoPostfix(temp);
                 // pop if-else pair from stack and add "?" to the postfix string

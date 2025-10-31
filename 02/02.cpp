@@ -4,10 +4,8 @@ Write a program that read the following string:
 a) Count how many vowels and Consonants are there?
 b) Find out which vowels and consonants are existed in the above string?
 c) Divide the given string into two separate strings, where one string only contains 
- the words started with vowel, and another contains the words started with consonant.
+the words started with vowel, and another contains the words started with consonant.
 */
-
-
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -50,7 +48,7 @@ int main() {
     cout << "\nNumber of vowels: " << vowel << '\n';
     cout << "The vowels are: " << vowels << '\n';
     cout << "Number of consonants: " << consonant << '\n';
-    cout << "The consonants are: " << consonants <<' \n';
+    cout << "The consonants are: " << consonants << '\n';
     cout << "Words started with vowel: " << vowel_words << '\n';
     cout << "Words started with consonant: " << consonant_words;
     

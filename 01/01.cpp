@@ -5,7 +5,6 @@ a) Count number of words, letters, digits and other characters.
 b) Separates letters, digits and others characters.
 */
 
-
 #include <bits/stdc++.h>
 using namespace std;
 

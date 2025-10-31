@@ -30,14 +30,13 @@ int main() {
             isValid = float_number(word);
             if(isValid) cout << word << " : "<< "Float variable\n";
         }
-        else if(isdigit(word[0])) {
+        else if(word[0]=='0') {
             int dot_position = -1, dot_count = 0;
             for(int i = 1; i < word.size(); i++) {
                 if(word[i] == '.') {
                     dot_position = i;
                     dot_count++;
-                }
-                if(!isdigit(word[i]) && (word[i] != '.')) {
+                } else if(!isdigit(word[i])) {
                     isValid = false;
                     break;
                 }

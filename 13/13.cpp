@@ -33,29 +33,28 @@ void CalculateFollow() {
     for (char target : order) { // Follow to be calculated for target
         for (char c : order) { // Check each production rule if the target is present at rightside
             for (auto str : grammar[c]) {
-                bool stop = false;
+                bool ok = false;
                 int j = 0;
                 for (int i = 0; i < str.size(); i++) {
                     if (str[i] == target) {
                         for (j = i + 1; j < str.size(); j++) {
-                            if (str[j] < 'A' || str[j] > 'Z') { // if it is a terminal then stop
+                            if (str[j] < 'A' || str[j] > 'Z') { // if it is a terminal then insert and break
                                 follow[target].insert(str[j]);
-                                stop = true;
+                                ok = true;
                                 break;
-                            }
-                            else {
+                            } else {
                                 for (char f : first[str[j]]) {
                                     if (f != '@')
                                         follow[target].insert(f);
                                 }
                                 if (first[str[j]].find('@') == first[str[j]].end()) {
-                                    stop = true; // if the non-terminal doesn't contain epsilon(@), then stop
+                                    ok = true; // if the non-terminal doesn't contain epsilon(@), then ok = true and break
                                     break;
                                 }
                             }
                         }
                     }
-                    if (stop) // current production has completed
+                    if (ok) // current production has completed
                         break;
                 }
                 if (j == str.size()) { // if we reach at the end of the production
