@@ -6,7 +6,6 @@ Double Number = 0.(0-9)(0-9)(0-9)+|(1-9)(0-9)*.(0-9)(0-9)(0-9)+
 Invalid Input or Undefined = Otherwise
 */
 
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -30,7 +29,7 @@ int main() {
             isValid = float_number(word);
             if(isValid) cout << word << " : "<< "Float variable\n";
         }
-        else if(word[0]=='0') {
+        else if(isdigit(word[0])) {
             int dot_position = -1, dot_count = 0;
             for(int i = 1; i < word.size(); i++) {
                 if(word[i] == '.') {

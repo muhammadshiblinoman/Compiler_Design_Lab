@@ -6,7 +6,6 @@ Binary Number = 0(0|1)(0|1)*
 Invalid Input or Undefined = Otherwise
 */
 
-
 #include <bits/stdc++.h>
 using namespace std;
 

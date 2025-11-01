@@ -1,6 +1,7 @@
 /*
 Write a program to implement a shift reducing parsing.
 */
+
 #include <bits/stdc++.h>
 using namespace std;
 
