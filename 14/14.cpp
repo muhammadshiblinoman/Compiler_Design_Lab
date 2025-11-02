@@ -70,6 +70,7 @@ int main() {
     first['T'] = {'(', 'i'};
     first['Q'] = {'*', '@'};
     first['F'] = {'(', 'i'};
+
     // Print grammar
     cout << "_____Grammar_____\n";
     for(auto c : order) {
@@ -124,7 +125,7 @@ int main() {
             }
         }
     }
-    
+
     // Print table
     cout<<"_____Parse Table_____\n";
     vector<char> column = {'i', '+', '*', '(', ')', '$'};

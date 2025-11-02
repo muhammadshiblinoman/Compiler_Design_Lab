@@ -11,7 +11,7 @@ the words started with vowel, and another contains the words started with conson
 using namespace std;
 
 bool is_vowel(char c) {
-    return tolower(c)=='a'||tolower(c)=='e'||tolower(c)=='i'||tolower(c)=='o'||tolower(c)=='u';
+    return tolower(c)=='a'|| tolower(c)=='e'|| tolower(c)=='i'|| tolower(c)=='o'|| tolower(c)=='u';
 }
 
 int main() {
@@ -27,15 +27,13 @@ int main() {
         if(is_vowel(c)) {
             vowel++;
             vowels += c;
-        }
-        else if(tolower(c) >= 'a' && tolower(c) <= 'z') {
+        } else if(tolower(c) >= 'a' && tolower(c) <= 'z') {
             consonant++;
             consonants += c;
         }
         if(tolower(c) >= 'a' && tolower(c) <= 'z') {
             word += c; 
-        }
-        else if(c == ' ') {
+        } else if(c == ' ') {
             if(is_vowel(word[0])) vowel_words += " " + word;
             else consonant_words += " " + word;
             word = "";

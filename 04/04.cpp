@@ -6,7 +6,6 @@ LongInt Number = (1-9)(0-9)(0-9)(0-9)(0-9)+
 Invalid Input or Undefined = Otherwise
 */
 
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -34,11 +33,11 @@ int main() {
 
     while (getline(cin, word)) {
         bool isValid = true;
-        if (tolower(word[0]) >= 'i' && tolower(word[0]) <= 'n') {
+        if (tolower(word[0]) >= 'i' and tolower(word[0]) <= 'n') {
             isValid = integer(word);
             if(isValid) cout << word << " : "<< "Integer variable\n";
         }
-        else if(word[0] >= '1' && word[0] <= '9') {
+        else if(word[0] >= '1' and word[0] <= '9') {
             isValid = numbers(word);
             if(isValid) {
                 if(word.size() < 5) cout << word << " : " << "ShortInt Number\n";

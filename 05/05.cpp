@@ -43,7 +43,7 @@ int main() {
             if(dot_position != -1 && dot_count == 1 && isValid) {
                 int subString = word.substr(dot_position+1).size();
                 if(subString == 2) cout << word <<" : " << "Float Number\n";
-                else if(subString >= 3) cout << word <<" : " << "Double Number\n";
+                else if(subString > 2) cout << word <<" : " << "Double Number\n";
                 else isValid = false;
             }
             else {

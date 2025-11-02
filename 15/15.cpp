@@ -10,7 +10,6 @@ F   F->id                             F->(E)
 */
 
 #include <bits/stdc++.h>
-
 using namespace std;
 
 map<pair<char, char>, string> table;
@@ -58,19 +57,19 @@ int main() {
     string str;
     getline(cin, str);
 
-    table[make_pair('E', 'i')] = "TP";
-    table[make_pair('E', '(')] = "TP";
-    table[make_pair('P', '+')] = "+TP";
-    table[make_pair('P', ')')] = "@";
-    table[make_pair('P', '$')] = "@";
-    table[make_pair('T', 'i')] = "FQ";
-    table[make_pair('T', '(')] = "FQ";
-    table[make_pair('Q', '+')] = "@";
-    table[make_pair('Q', ')')] = "@";
-    table[make_pair('Q', '$')] = "@";
-    table[make_pair('Q', '*')] = "*FQ";
-    table[make_pair('F', 'i')] = "i";
-    table[make_pair('F', '(')] = "(E)";
+    table[{'E', 'i'}] = "TP";
+    table[{'E', '('}] = "TP";
+    table[{'P', '+'}] = "+TP";
+    table[{'P', ')'}] = "@";
+    table[{'P', '$'}] = "@";
+    table[{'T', 'i'}] = "FQ";
+    table[{'T', '('}] = "FQ";
+    table[{'Q', '+'}] = "@";
+    table[{'Q', ')'}] = "@";
+    table[{'Q', '$'}] = "@";
+    table[{'Q', '*'}] = "*FQ";
+    table[{'F', 'i'}] = "i";
+    table[{'F', '('}] = "(E)";
 
     cout << "Input string : " << str << endl;
     if (solve(str))
